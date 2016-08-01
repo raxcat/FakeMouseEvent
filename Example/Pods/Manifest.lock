@@ -1,0 +1,16 @@
+PODS:
+  - FakeMouseEvent (0.1.0)
+
+DEPENDENCIES:
+  - FakeMouseEvent (from `../`)
+
+EXTERNAL SOURCES:
+  FakeMouseEvent:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FakeMouseEvent: 9ec2b13cce8e263bf2db4e9e742325502a6b25e1
+
+PODFILE CHECKSUM: ec89f1b2fdae2097307a032097a7c503b24710eb
+
+COCOAPODS: 1.0.1

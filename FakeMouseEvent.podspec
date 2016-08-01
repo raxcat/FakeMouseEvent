@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'FakeMouseEvent'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of FakeMouseEvent.'
+  s.summary          = 'A framework for generating mouse events.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,14 +21,14 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/FakeMouseEvent'
+  s.homepage         = 'https://github.com/raxcat/FakeMouseEvent'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'raxcat' => 'raxcat@gmail.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/FakeMouseEvent.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/raxcat/FakeMouseEvent.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '8.0'
+  s.osx.deployment_target = '10.10'
+  s.requires_arc = true
 
   s.source_files = 'FakeMouseEvent/Classes/**/*'
   

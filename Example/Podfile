@@ -2,10 +2,4 @@ use_frameworks!
 
 target 'FakeMouseEvent_Example' do
   pod 'FakeMouseEvent', :path => '../'
-
-  target 'FakeMouseEvent_Tests' do
-    inherit! :search_paths
-
-    
-  end
 end

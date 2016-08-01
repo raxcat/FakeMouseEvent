@@ -1,0 +1,6 @@
+framework module FakeMouseEvent {
+  umbrella header "FakeMouseEvent-umbrella.h"
+
+  export *
+  module * { export * }
+}
