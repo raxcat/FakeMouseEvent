@@ -40,6 +40,11 @@
 // IOKit Coordinate System(Zero Point ↖︎)
 +(void)postMouseDrag:(NSPoint)currentPoint;
 
+// Method to post mouse drag event use input point
+// IOKit Coordinate System(Zero Point ↖︎)
++(void)postMouseWheelScroll:(NSPoint)delta;
+
+
 //+(io_connect_t)serviceConnection;
 
 @end

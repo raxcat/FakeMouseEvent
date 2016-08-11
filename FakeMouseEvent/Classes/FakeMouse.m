@@ -277,4 +277,18 @@ static NSPoint currentPointFlipped(){
     }
 }
 
++(void)postMouseWheelScroll:(NSPoint)delta
+{
+    //credit: http://stackoverflow.com/questions/6126226/how-to-create-an-nsevent-of-type-nsscrollwheel
+    
+    CGWheelCount wheelCount = 1; // 1 for Y-only, 2 for Y-X, 3 for Y-X-Z
+    //    int32_t xScroll = 0; // Negative for right
+    int32_t yScroll = delta.y; // Negative for down
+    CGEventRef cgEvent = CGEventCreateScrollWheelEvent(NULL, kCGScrollEventUnitLine, wheelCount, yScroll);
+    
+    // You can post the CGEvent to the event stream to have it automatically sent to the window under the cursor
+    CGEventPost(kCGHIDEventTap, cgEvent);
+}
+
+
 @end
