@@ -17,7 +17,7 @@ static io_connect_t _serviceConnection = MACH_PORT_NULL;
 static NSPoint currentPoint(){
     NSPoint mouseLoc;
     mouseLoc = [NSEvent mouseLocation]; //get current mouse position
-    NSLog(@"Mouse location(Zero Point ↙︎): %f %f", mouseLoc.x, mouseLoc.y);
+//    NSLog(@"Mouse location(Zero Point ↙︎): %f %f", mouseLoc.x, mouseLoc.y);
     return mouseLoc;
 }
 
@@ -27,7 +27,7 @@ static NSPoint currentPoint(){
 static NSPoint currentPointFlipped(){
     NSPoint point = [NSEvent mouseLocation];
     point = NSMakePoint(point.x, NSHeight([NSScreen mainScreen].frame) - point.y);
-    NSLog(@"Mouse location(Zero Point ↖︎): %f %f", point.x, point.y);
+//    NSLog(@"Mouse location(Zero Point ↖︎): %f %f", point.x, point.y);
     return point;
 }
 
@@ -117,7 +117,7 @@ static NSPoint currentPointFlipped(){
     //    }
 }
 
-+(void) postDownOnCurrentPoint{
++(void) postLeftMouseDownOnCurrentPoint{
     NSPoint current = currentPointFlipped();
     IOGPoint locPoint;
     locPoint.x = (SInt16)(current.x);
@@ -136,13 +136,10 @@ static NSPoint currentPointFlipped(){
     if (serviceConnection != MACH_PORT_NULL) {
         kern_return_t kr;
         kr = IOHIDPostEvent(serviceConnection, NX_LMOUSEDOWN, locPoint, &mouseEvent.data, kNXEventDataVersion, 0, kIOHIDSetCursorPosition);
-#ifdef __DEBUG_
-        NSLog(@"Nelson - Mouse Down %ld", kr);
-#endif
     }
 }
 
-+(void) postMouseUpOnCurrentPoint{
++(void) postLeftMouseUpOnCurrentPoint{
     NSPoint current = currentPointFlipped();
     IOGPoint locPoint;
     locPoint.x = (SInt16)(current.x);
@@ -161,9 +158,49 @@ static NSPoint currentPointFlipped(){
     if (serviceConnection != MACH_PORT_NULL) {
         kern_return_t kr;
         kr = IOHIDPostEvent(serviceConnection, NX_LMOUSEUP, locPoint, &mouseEvent.data, kNXEventDataVersion, 0, kIOHIDSetCursorPosition);
-#ifdef __DEBUG_
-        NSLog(@"Nelson - Mouse Up %ld", kr);
-#endif
+    }
+}
+
++(void) postRightMouseDownOnCurrentPoint{
+    NSPoint current = currentPointFlipped();
+    IOGPoint locPoint;
+    locPoint.x = (SInt16)(current.x);
+    locPoint.y = (SInt16)(current.y);
+    // create mouse down event for input point
+    NXEvent mouseEvent = {NX_RMOUSEDOWN, {0, 0}, 0, -1, 0};
+    memset(&(mouseEvent.data), 0 , sizeof(mouseEvent.data));
+    mouseEvent.data.mouse.subx = 0;
+    mouseEvent.data.mouse.suby = 0;
+    mouseEvent.data.mouse.eventNum = 1;
+    mouseEvent.data.mouse.click = 1;
+    mouseEvent.data.mouse.pressure = 128;
+    mouseEvent.data.mouse.subType = NX_SUBTYPE_DEFAULT;
+    // post mouse down event
+    io_connect_t serviceConnection = [FakeMouse serviceConnection];
+    if (serviceConnection != MACH_PORT_NULL) {
+        kern_return_t kr;
+        kr = IOHIDPostEvent(serviceConnection, NX_RMOUSEDOWN, locPoint, &mouseEvent.data, kNXEventDataVersion, 0, kIOHIDSetCursorPosition);
+    }
+}
++(void) postRightMouseUpOnCurrentPoint{
+    NSPoint current = currentPointFlipped();
+    IOGPoint locPoint;
+    locPoint.x = (SInt16)(current.x);
+    locPoint.y = (SInt16)(current.y);
+    // create mouse up event for input point
+    NXEvent mouseEvent = {NX_RMOUSEUP, {0, 0}, 0, -1, 0};
+    memset(&(mouseEvent.data), 0 , sizeof(mouseEvent.data));
+    mouseEvent.data.mouse.subx = 0;
+    mouseEvent.data.mouse.suby = 0;
+    mouseEvent.data.mouse.eventNum = 1;
+    mouseEvent.data.mouse.click = 0;
+    mouseEvent.data.mouse.pressure = 128;
+    mouseEvent.data.mouse.subType = NX_SUBTYPE_DEFAULT;
+    // post mouse up event
+    io_connect_t serviceConnection = [FakeMouse serviceConnection];
+    if (serviceConnection != MACH_PORT_NULL) {
+        kern_return_t kr;
+        kr = IOHIDPostEvent(serviceConnection, NX_RMOUSEUP, locPoint, &mouseEvent.data, kNXEventDataVersion, 0, kIOHIDSetCursorPosition);
     }
 }
 
@@ -189,9 +226,6 @@ static NSPoint currentPointFlipped(){
     if (serviceConnection != MACH_PORT_NULL) {
         kern_return_t kr;
         kr = IOHIDPostEvent(serviceConnection, NX_LMOUSEDOWN, locPoint, &mouseEvent.data, kNXEventDataVersion, 0, kIOHIDSetCursorPosition);
-#ifdef __DEBUG_
-        NSLog(@"Nelson - Mouse Down %ld", kr);
-#endif
     }
 }
 
@@ -216,9 +250,6 @@ static NSPoint currentPointFlipped(){
     if (serviceConnection != MACH_PORT_NULL) {
         kern_return_t kr;
         kr = IOHIDPostEvent(serviceConnection, NX_LMOUSEUP, locPoint, &mouseEvent.data, kNXEventDataVersion, 0, kIOHIDSetCursorPosition);
-#ifdef __DEBUG_
-        NSLog(@"Nelson - Mouse Up %ld", kr);
-#endif
     }
 }
 
@@ -243,11 +274,7 @@ static NSPoint currentPointFlipped(){
     if (serviceConnection != MACH_PORT_NULL) {
         kern_return_t kr;
         kr = IOHIDPostEvent(serviceConnection, NX_LMOUSEDRAGGED, locPoint, &mouseEvent.data, kNXEventDataVersion, 0, kIOHIDSetCursorPosition);
-#ifdef __DEBUG__
-        NSLog(@"Mouse Drag %ld", kr);
-#endif
     }
 }
-
 
 @end
