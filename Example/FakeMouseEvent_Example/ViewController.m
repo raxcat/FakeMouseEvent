@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+@import FakeMouseEvent;
 
 @implementation ViewController
 
@@ -20,6 +21,14 @@
     [super setRepresentedObject:representedObject];
 
     // Update the view, if already loaded.
+}
+- (IBAction)testMove:(id)sender {
+    for(int i = 0; i< 100 ; i++){
+        [FakeMouse postRelativeMouseMove:NSMakePoint(1, 1)];
+    }
+    
+}
+- (IBAction)testDrag:(id)sender {
 }
 
 @end

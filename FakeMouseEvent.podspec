@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+A framework for generating mouse events. Using IOKit(HID library) and CGEvent.
                        DESC
 
   s.homepage         = 'https://github.com/raxcat/FakeMouseEvent'
@@ -31,12 +31,5 @@ TODO: Add long description of the pod here.
   s.requires_arc = true
 
   s.source_files = 'FakeMouseEvent/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'FakeMouseEvent' => ['FakeMouseEvent/Assets/*.png']
-  # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end

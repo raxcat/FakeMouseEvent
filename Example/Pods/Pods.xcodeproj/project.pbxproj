@@ -12,7 +12,7 @@
 		51FB2C8FA91C4549F96DB9BABD73E555 /* FakeMouseEvent-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 456F66A572DC589F486764EB3BB9800E /* FakeMouseEvent-dummy.m */; };
 		6B114BC689FDCB0BBCEF1E6350CB702D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA6EBC2E57D96052268211209D6AA52 /* Cocoa.framework */; };
 		C328B9BD4AA6D25B17E67AA1C1CFBE1A /* Pods-FakeMouseEvent_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 928527E5D2C2C6EC7A18E91FF46AD17E /* Pods-FakeMouseEvent_Example-dummy.m */; };
-		D36643841D4EF2FB00EEBC3D /* FakeMouse.h in Headers */ = {isa = PBXBuildFile; fileRef = D36643821D4EF2FB00EEBC3D /* FakeMouse.h */; };
+		D36643841D4EF2FB00EEBC3D /* FakeMouse.h in Headers */ = {isa = PBXBuildFile; fileRef = D36643821D4EF2FB00EEBC3D /* FakeMouse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D36643851D4EF2FB00EEBC3D /* FakeMouse.m in Sources */ = {isa = PBXBuildFile; fileRef = D36643831D4EF2FB00EEBC3D /* FakeMouse.m */; };
 		FF16D1C46D084E921F7AB707394B6553 /* FakeMouseEvent-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EE7521EA2BC4D929F72382091B1B717F /* FakeMouseEvent-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
