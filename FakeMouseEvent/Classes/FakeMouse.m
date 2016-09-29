@@ -87,12 +87,12 @@ static NSPoint currentPointFlipped(){
 }
 
 // Method to post mouse drag event use input point
-+ (void)postRelativeMouseDrag:(NSPoint)delta
++ (void)postRelativeLeftMouseDrag:(NSPoint)delta
 {
     NSPoint current = currentPointFlipped();
     current.x += delta.x;
     current.y += delta.y;
-    [self postMouseDrag:current];
+    [self postLeftMouseDrag:current];
     
     //    IOGPoint locPoint;
     //    locPoint.x = (SInt16)(current.x);
@@ -207,7 +207,7 @@ static NSPoint currentPointFlipped(){
 
 // Method to post mouse down event use input point
 // IOKit Coordinate System
-+(void)postMouseDown:(NSPoint)currentPoint
++(void)postLeftMouseDown:(NSPoint)currentPoint
 {
     IOGPoint locPoint;
     locPoint.x = currentPoint.x;
@@ -231,7 +231,7 @@ static NSPoint currentPointFlipped(){
 
 // Method to post mouse up event use input point
 // IOKit Coordinate System
-+(void)postMouseUp:(NSPoint)currentPoint
++(void)postLeftMouseUp:(NSPoint)currentPoint
 {
     IOGPoint locPoint;
     locPoint.x = currentPoint.x;
@@ -255,7 +255,7 @@ static NSPoint currentPointFlipped(){
 
 // Method to post mouse drag event use input point
 // IOKit Coordinate System
-+(void)postMouseDrag:(NSPoint)currentPoint
++(void)postLeftMouseDrag:(NSPoint)currentPoint
 {
     IOGPoint locPoint;
     locPoint.x = currentPoint.x;

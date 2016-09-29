@@ -14,7 +14,7 @@
 +(void)postRelativeMouseMove:(NSPoint)delta;
 
 // Method to post mouse drag event use input point
-+(void)postRelativeMouseDrag:(NSPoint)delta;
++(void)postRelativeLeftMouseDrag:(NSPoint)delta;
 
 //Generate a left mouse down event.
 +(void) postLeftMouseDownOnCurrentPoint;
@@ -30,21 +30,18 @@
 
 // Method to post mouse down event use input point
 // IOKit Coordinate System(Zero Point ↖︎)
-+(void)postMouseDown:(NSPoint)currentPoint;
++(void)postLeftMouseDown:(NSPoint)currentPoint;
 
 // Method to post mouse up event use input point
 // IOKit Coordinate System(Zero Point ↖︎)
-+(void)postMouseUp:(NSPoint)currentPoint;
++(void)postLeftMouseUp:(NSPoint)currentPoint;
 
 // Method to post mouse drag event use input point
 // IOKit Coordinate System(Zero Point ↖︎)
-+(void)postMouseDrag:(NSPoint)currentPoint;
++(void)postLeftMouseDrag:(NSPoint)currentPoint;
 
 // Method to post mouse drag event use input point
 // IOKit Coordinate System(Zero Point ↖︎)
 +(void)postMouseWheelScroll:(NSPoint)delta;
-
-
-//+(io_connect_t)serviceConnection;
 
 @end
